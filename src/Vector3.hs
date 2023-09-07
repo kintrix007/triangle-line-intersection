@@ -6,7 +6,7 @@ module Vector3
   , toVec
   , magnitude
   , normalize
-  , project) where
+  , projectOn) where
 
 data Vector3 = Vector3
   !Double -- ^ x coord
@@ -51,5 +51,6 @@ normalize :: Vector3 -> Vector3
 normalize vec = vec * toVec (1/magnitude vec)
 
 -- | Project the first vector onto the second one.
-project :: Vector3 -> Vector3 -> Vector3
-project vec line = vec * toVec ((vec `dot` line) / (vec `dot` vec))
+infix 8 `projectOn`
+projectOn :: Vector3 -> Vector3 -> Vector3
+b `projectOn` a = toVec ((a `dot` b) / (a `dot` a)) * a
