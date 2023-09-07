@@ -1,6 +1,6 @@
-name:                tri
+name:                triangle-line-intersection
 version:             0.1.0.0
-github:              "kintrix007/tri"
+github:              "kintrix007/triangle-line-intersection"
 license:             BSD3
 author:              "kintrix"
 maintainer:          "boldizsar02@gmail.com"
@@ -17,7 +17,7 @@ extra-source-files:
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
-description:         Please see the README on GitHub at <https://github.com/kintrix007/tri#readme>
+description:         Please see the README on GitHub at <https://github.com/kintrix007/triangle-line-intersection#readme>
 
 dependencies:
 - base >= 4.7 && < 5
@@ -37,7 +37,7 @@ library:
   source-dirs: src
 
 executables:
-  tri-exe:
+  triangle-line-intersection-exe:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
@@ -45,10 +45,10 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - tri
+    - triangle-line-intersection
 
 tests:
-  tri-test:
+  triangle-line-intersection-test:
     main:                Spec.hs
     source-dirs:         test
     ghc-options:
@@ -56,4 +56,4 @@ tests:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - tri
+    - triangle-line-intersection
