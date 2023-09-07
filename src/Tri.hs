@@ -5,15 +5,20 @@ module Tri
 import           Vector3
 
 data Tri = Tri
-  { a :: !Vector3
-  , b :: !Vector3
-  , c :: !Vector3 }
+  !Vector3 -- ^ Vertex a
+  !Vector3 -- ^ Vertex b
+  !Vector3 -- ^ Vertex c
   deriving (Show, Eq)
 
--- isOnTri :: Vector3 -> Tri -> Bool
+isOnTri :: Vector3 -> Tri -> Bool
 isOnTri p (Tri a b c) =
-  -- Only checks one side
-  vip `dot` vib
+  checkSideAC p (Tri a b c)
+  && checkSideAC p (Tri b c a)
+  && checkSideAC p (Tri c a b)
+
+checkSideAC :: Vector3 -> Tri -> Bool
+checkSideAC p (Tri a b c) =
+  vip `dot` vib >= 0
   where
     vab = b - a
     vac = c - a
