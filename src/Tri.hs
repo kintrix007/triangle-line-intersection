@@ -75,4 +75,3 @@ checkSideAC p (Tri a b c) =
     vai = vab `projectOn` vac
     vip = vap - vai
     vib = vab - vai
-
