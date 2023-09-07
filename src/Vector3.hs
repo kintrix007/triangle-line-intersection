@@ -6,7 +6,8 @@ module Vector3
   , toVec
   , magnitude
   , normalize
-  , projectOn) where
+  , projectOn
+  , cross) where
 
 data Vector3 = Vector3
   !Double -- ^ x coord
@@ -45,7 +46,12 @@ magnitude = sqrt . magnitudeSquared
 
 infixl 7 `dot`
 dot :: Vector3 -> Vector3 -> Double
-dot (Vector3 x y z) (Vector3 x' y' z') = x*x' + y*y' + z*z'
+Vector3 x y z `dot` Vector3 x' y' z' = x*x' + y*y' + z*z'
+
+infixl 7 `cross`
+cross :: Vector3 -> Vector3 -> Vector3
+Vector3 x1 y1 z1 `cross` Vector3 x2 y2 z2 =
+  Vector3 (y1*z2 - z1*y2) (z1*x2 - x1*z2) (x1*y2 - y1*x2)
 
 normalize :: Vector3 -> Vector3
 normalize vec = vec * toVec (1/magnitude vec)
